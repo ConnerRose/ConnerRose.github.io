@@ -23,13 +23,13 @@ if (reminder_data.length == 0){
     new_button_container.insertAdjacentHTML('beforeend','<p id="no_reminder_header">Click Here to Add New Reminder</p>');
 } else {
     //loop through reminder object structure
-    clear_button_container.insertAdjacentHTML('beforeend', '<input id="clear_button" type="image" src="../images/spr_clear_button.png">');
+    clear_button_container.insertAdjacentHTML('beforeend', '<input id="clear_button" type="image" src="../spr_clear_button.png">');
     for (var i = 0; i < reminder_data.length; i++) {
         var current_remind_obj = reminder_data[i];
         if(current_remind_obj.time !== ""){
-            remind_container.insertAdjacentHTML('beforeend','<article class="reminder_tab"> <h1 class="reminder_name">' + current_remind_obj.name + '</h1><h2 class="reminder_date">' + current_remind_obj.date +  "; " + current_remind_obj.time + '</h2><p class="reminder_desc">' + current_remind_obj.desc + '</p><input class="tab_button" type="image" src="../images/spr_tab_button.png"><input data-internal-id="' + i + '" class="delete_button" type="image" src="../images/spr_delete_button.png"></article>');
+            remind_container.insertAdjacentHTML('beforeend','<article class="reminder_tab"> <h1 class="reminder_name">' + current_remind_obj.name + '</h1><h2 class="reminder_date">' + current_remind_obj.date +  "; " + current_remind_obj.time + '</h2><p class="reminder_desc">' + current_remind_obj.desc + '</p><input class="tab_button" type="image" src="../spr_tab_button.png"><input data-internal-id="' + i + '" class="delete_button" type="image" src="../spr_delete_button.png"></article>');
         } else {
-            remind_container.insertAdjacentHTML('beforeend','<article class="reminder_tab"> <h1 class="reminder_name">' + current_remind_obj.name + '</h1><h2 class="reminder_date">' + current_remind_obj.date + '</h2><p class="reminder_desc">' + current_remind_obj.desc + '</p><input class="tab_button" type="image" src="../images/spr_tab_button.png"><input data-internal-id="' + i + '" class="delete_button" type="image" src="../images/spr_delete_button.png"></article>');
+            remind_container.insertAdjacentHTML('beforeend','<article class="reminder_tab"> <h1 class="reminder_name">' + current_remind_obj.name + '</h1><h2 class="reminder_date">' + current_remind_obj.date + '</h2><p class="reminder_desc">' + current_remind_obj.desc + '</p><input class="tab_button" type="image" src="../spr_tab_button.png"><input data-internal-id="' + i + '" class="delete_button" type="image" src="../spr_delete_button.png"></article>');
         }
     }
 }
