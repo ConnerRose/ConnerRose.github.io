@@ -1,0 +1,35 @@
+//does all the stuff we need to start using the app ( arrays, objects, etc. )//////////
+//Fetches saved reminders via JSON//////////
+
+//set reminder array for later use
+//<name>, <desc>, <time>
+
+//variables
+//allocate local storage for reminder structure
+if('reminders' in localStorage){
+    reminder_data = JSON.parse(localStorage.getItem('reminders'));
+} else {   
+    var reminder_data = [];
+    localStorage.setItem('reminders', JSON.stringify(reminder_data));
+}
+
+//write reminders to article
+var remind_container = document.getElementById("remind_container");
+var new_button_container = document.getElementById("new_button_container");
+var clear_button_container = document.getElementById("clear_button_container");
+
+//if no reminders are present, display text
+if (reminder_data.length == 0){
+    new_button_container.insertAdjacentHTML('beforeend','<p id="no_reminder_header">Click Here to Add New Reminder</p>');
+} else {
+    //loop through reminder object structure
+    clear_button_container.insertAdjacentHTML('beforeend', '<input id="clear_button" type="image" src="../images/spr_clear_button.png">');
+    for (var i = 0; i < reminder_data.length; i++) {
+        var current_remind_obj = reminder_data[i];
+        if(current_remind_obj.time !== ""){
+            remind_container.insertAdjacentHTML('beforeend','<article class="reminder_tab"> <h1 class="reminder_name">' + current_remind_obj.name + '</h1><h2 class="reminder_date">' + current_remind_obj.date +  "; " + current_remind_obj.time + '</h2><p class="reminder_desc">' + current_remind_obj.desc + '</p><input class="tab_button" type="image" src="../images/spr_tab_button.png"><input data-internal-id="' + i + '" class="delete_button" type="image" src="../images/spr_delete_button.png"></article>');
+        } else {
+            remind_container.insertAdjacentHTML('beforeend','<article class="reminder_tab"> <h1 class="reminder_name">' + current_remind_obj.name + '</h1><h2 class="reminder_date">' + current_remind_obj.date + '</h2><p class="reminder_desc">' + current_remind_obj.desc + '</p><input class="tab_button" type="image" src="../images/spr_tab_button.png"><input data-internal-id="' + i + '" class="delete_button" type="image" src="../images/spr_delete_button.png"></article>');
+        }
+    }
+}
